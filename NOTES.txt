@@ -2,7 +2,7 @@ next.config
 added a image object that has a domain property name with an array as value for the allowed 
 domain names to get images from.
 
-server side render-next.js
+server side render-next.js seo performance and user epeirence fast speed
 
 -tailwind UI, 
 fetch data from api,
