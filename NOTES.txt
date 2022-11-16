@@ -2,5 +2,9 @@ next.config
 added a image object that has a domain property name with an array as value for the allowed 
 domain names to get images from.
 
+server side render-next.js
 
+-tailwind UI, 
+fetch data from api,
+search functionality usestate
 
