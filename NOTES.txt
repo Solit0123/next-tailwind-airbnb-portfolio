@@ -8,3 +8,49 @@ server side render-next.js seo performance and user epeirence fast speed
 fetch data from api,
 search functionality usestate
 
+
+
+
+TODOS
+
+1. once the user searches within the search page , the datepicker remains open
+    NEED TO hide it,or reset state to 0.
+    NEEDS TO remain the search values on the search bar.
+
+solution: the header recieves a prop which is the query parameters and if true it renders that as the placeholder value. 
+so that state remains 0 and it is closed.
+this happens because when the search pushed to a new page route. the state gets lost. 
+however, when on the search page it doesnt redirect anywhere and state remains OPEN.
+
+2. change the dummy data API and connect it to a database. could be STRAPI or FIREBASE? 
+    WHICH ONE TO CHOSE?
+    1. STRAPI
+                -serves as practice for Beela website, TechFleet's website, and to learn more about Docker,Kubernetes.
+    2. FIREBASE 
+                -realtime API
+
+
+3. Allow user authentication as a customer and as a AirBnb HOSTER.
+    NEED TO allow users to book a airbnb. 
+    each airbnb needs an owner,dates,title,photos,availability.
+    -need to check for availability on all airbnb's and return them based on the query on the search page.
+    -product page needs to retrieve the one product. [dynamic generating the page.]
+
+4. Style the MAPBOX so it looks like the Real AirBNB coor pallette
+
+5. implmement map on search page
+    NEEDS to be able to show the card map (lat,lang) onclick of the card.
+    -solution- update the state of the viewport.
+
+6. Make sure the map marker can close.
+    Need to ass a X at the top right.
+    and make sure the text doesnt move the pin from place.
+
+
+
+
+
+
+learning notes:
+i can add any public keys, exposed keys on the next.config file. 
+for proivate continue to use the .ENV
