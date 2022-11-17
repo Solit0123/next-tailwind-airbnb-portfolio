@@ -8,6 +8,18 @@ import LargeCard from "../components/LargeCard"
 import MediumCard from "../components/MediumCard"
 import SmallCard from "../components/SmallCard"
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Navigation,Autoplay } from "swiper";
+
+
+
 function Home({exploreData, cardsData}) {
   return (
     <>
@@ -35,14 +47,47 @@ function Home({exploreData, cardsData}) {
 
             <section>
                 <h2 className="text-4xl font-semibold py-8">Live anywhere</h2>
-                <div className="flex space-x-3 overflow-scroll
-                 scrollbar-hide p-3 -ml-3">
+                <div className="
+                 p-3 -ml-3 ">
+
+            <Swiper
+            slidesPerView={1}
+            spaceBetween={30}
+            loop={true}
+            loopFillGroupWithBlank={false}
+            pagination={{
+            clickable: true,
+            }}
+            navigation={true}
+            modules={[Autoplay,Pagination, Navigation]}
+            autoplay={{
+                delay: 2000,
+                disableOnInteraction: true,
+              }}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2,
+                  slidesPerGroup: 2,
+                  spaceBetween: 30,
+                },
+                1024: {
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 30,
+                },
+              }}
+            className="mySwiper"
+            >
                         {cardsData?.map(item => (
-                            <MediumCard key={isTemplateExpression.img} img={item.img} title={item.title}/>
+                       <SwiperSlide  ><MediumCard  key={isTemplateExpression.img} img={item.img} title={item.title}/></SwiperSlide>   
                         ))}
+
+            </Swiper>   
+
                 </div>
             </section>
 
+            
 
             <LargeCard img="https://links.papareact.com/4cj"
                         title="The gratest outdoors"
