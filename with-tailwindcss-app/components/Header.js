@@ -7,13 +7,11 @@ import { DateRangePicker } from 'react-date-range';
 import { useRouter } from "next/router";
 
 
-import { useSession, signIn, signOut } from "next-auth/react"
 import LogInOutButton from "./login-btn";
 
 
 
 function Header({placeholder}) {
-        const { session } = useSession()
 
 
 

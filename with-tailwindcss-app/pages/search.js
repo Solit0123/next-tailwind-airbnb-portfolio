@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import {format} from "date-fns"
 import InfoCard from "../components/infoCard";
 import Map from "../components/Map";
+import Link from "next/link";
 
 function Search({searchResults}) {
 
@@ -38,7 +39,7 @@ const range = `${formattedStartDate} - ${formattedEndDate}`;
                     
                     <div className="">
                         {searchResults.map(({img, location, title, description, star, price, total}) => (
-                                <InfoCard key={img} img={img} location={location} title={title} description={description} star={star} price={price} total={total}/>
+                            <Link href={"/post/" + title}>   <InfoCard key={img} img={img} location={location} title={title} description={description} star={star} price={price} total={total}/>  </Link> 
                         ))}
                     </div>
 
