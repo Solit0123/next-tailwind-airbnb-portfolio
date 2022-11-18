@@ -17,10 +17,12 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation,Autoplay } from "swiper";
-
+import { useSession } from "next-auth/react"
 
 
 function Home({exploreData, cardsData}) {
+  const { data: session } = useSession()
+ 
   return (
     <>
         <Head>
@@ -33,6 +35,8 @@ function Home({exploreData, cardsData}) {
         {/* Main section */}
         <main className="max-w-7xl mx-auto px-8 sm:px-16 ">
             <section className="pt-6">
+                <h3 className="text-lg font-bold">Welcome, { session && session.user.name}</h3>
+                <h3 className="text-2xl font-bold">{ !session && "you are not logged in"}</h3>
                 <h2 className="text-4xl font-semibold pb-5 ">Explore Nearby</h2>
 
                 {/* PULL DATA FROM SERVER (static -caches) or serverside rendering.*/}
