@@ -6,7 +6,17 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from "next/router";
 
+
+import { useSession, signIn, signOut } from "next-auth/react"
+import LogInOutButton from "./login-btn";
+
+
+
 function Header({placeholder}) {
+        const { session } = useSession()
+
+
+
 
     const [searchInput, setSearchInput] = useState('');
     const [startDate, setStartDate] = useState(new Date());
@@ -85,7 +95,8 @@ const handleSubmit = () => {
 
             <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
               <MenuIcon className="h-6 cursor-pointer"/>
-              <UserCircleIcon className="h-6 cursor-pointer"/>
+
+             <LogInOutButton/>
             </div>
         </div>
 {searchInput && 
