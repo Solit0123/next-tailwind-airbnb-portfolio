@@ -5,7 +5,8 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from "next/router";
-
+import {HeartIcon} from "@heroicons/react/outline"
+import Link from "next/link"
 
 import LogInOutButton from "./login-btn";
 
@@ -93,7 +94,9 @@ const handleSubmit = () => {
 
             <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
               <MenuIcon className="h-6 cursor-pointer"/>
-
+              <Link href="/favorites"> 
+        <HeartIcon  className="h-7 cursor-pointer "/>
+        </Link>
              <LogInOutButton/>
             </div>
         </div>
