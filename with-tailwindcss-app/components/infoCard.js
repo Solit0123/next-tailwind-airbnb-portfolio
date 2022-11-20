@@ -2,7 +2,7 @@ import Image from "next/image"
 import {HeartIcon} from "@heroicons/react/outline"
 import {StarIcon} from "@heroicons/react/solid"
 import { useRouter } from 'next/router'
-import {useContext} from "react"
+import {useState, useContext} from "react"
 import AppContext from "../components/library/appcontext"
 
 function InfoCard({ img, location, title, description, star, price, total}) {
@@ -30,6 +30,29 @@ const myContext = useContext(AppContext)
         console.log(myContext.contextState)
     
     }
+
+const [handleClick,setHandleClick] = useState(false);
+
+    async function handleClickHeart(title){
+
+setHandleClick(!handleClick);
+// if its on, delete.
+if (handleClick){
+    const propertyList =  myContext.contextState.properties;
+    // const newList = propertyList.filter(myContext.contextState.properties.title != title)
+    console.log("im tryna delete somethhing")
+    myContext.setContextState({properties: [...myContext.contextState.properties.filter(i => i != title)]})
+}
+if(!handleClick){
+    myContext.setContextState({properties: [...myContext.contextState.properties, title]})
+    console.log("handle heart has been updated")
+    console.log(myContext.contextState)
+}
+//if its off, add to fav.
+
+
+
+    }
     
     
 
@@ -49,7 +72,11 @@ const myContext = useContext(AppContext)
         <div className="flex flex-col flex-grow pl-5">
             <div className="flex justify-between"> {/* the top section with a heart */}
             <p>{location}</p>
-            <HeartIcon  onClick={(e) => handleHeart(title)} className="h-7 cursor-pointer "/>
+            {/* if this title matches on the context api then display red. */}
+            {myContext.contextState.properties.find(i => i == title) ? 
+            <HeartIcon  onClick={(e) => handleClickHeart(title)} className="h-7 cursor-pointer fill-[red] text-[red]  hover:scale-105"/> :
+             <HeartIcon  onClick={(e) => handleClickHeart(title)} className="h-7 cursor-pointer  text-black  hover:text-[red]"/> }
+            
           {favoritePage &&  <button onClick={(e) => deleteFav(title)}>Delete from favorites</button>}
           
 
